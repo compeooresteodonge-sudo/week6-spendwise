@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Track your budget and expenses with SpendWise.">
+  <title>SpendWise | Budget Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="SpendWise home">
+      <span class="brand-icon" aria-hidden="true">$</span>
+      <span>SpendWise</span>
+    </a>
+    <p class="header-note">A simple way to know where your money goes.</p>
+  </header>
+
+  <main class="page-content">
+    <section class="welcome">
+      <p class="eyebrow">YOUR MONEY, MADE CLEAR</p>
+      <h1>Small steps. Smarter spending.</h1>
+      <p>Set a budget, add your expenses, and see how you are doing.</p>
+    </section>
+
+    <section class="dashboard" aria-label="Budget dashboard">
+      <article class="summary-card budget-card">
+        <p class="card-label">Your budget</p>
+        <p class="card-value" id="budget-total">KSh 0.00</p>
+        <p class="card-note">The amount you plan to spend</p>
+      </article>
+      <article class="summary-card spent-card">
+        <p class="card-label">Total spent</p>
+        <p class="card-value" id="spent-total">KSh 0.00</p>
+        <p class="card-note">All expenses added so far</p>
+      </article>
+      <article class="summary-card remaining-card">
+        <p class="card-label">Money left</p>
+        <p class="card-value" id="remaining-total">KSh 0.00</p>
+        <p class="card-note">Your budget minus your spending</p>
+      </article>
+    </section>
+
+    <p class="budget-message" id="budget-message" role="status" aria-live="polite">
+      Set your budget to get started.
+    </p>
+
+    <div class="content-grid">
+      <section class="panel" aria-labelledby="budget-heading">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">STEP 1</p>
+            <h2 id="budget-heading">Set your budget</h2>
+          </div>
+        </div>
+        <form id="budget-form">
+          <label for="budget-input">Budget amount (KSh)</label>
+          <div class="input-row">
+            <input id="budget-input" name="budget" type="number" min="0.01" step="0.01" placeholder="For example, 15000" required>
+            <button class="button button-primary" type="submit">Save budget</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel" aria-labelledby="expense-heading">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">STEP 2</p>
+            <h2 id="expense-heading">Add an expense</h2>
+          </div>
+        </div>
+        <form id="expense-form">
+          <label for="expense-name">What did you spend on?</label>
+          <input id="expense-name" name="expenseName" type="text" maxlength="60" placeholder="For example, lunch" required>
+
+          <div class="form-row">
+            <div>
+              <label for="expense-amount">Amount (KSh)</label>
+              <input id="expense-amount" name="expenseAmount" type="number" min="0.01" step="0.01" placeholder="500" required>
+            </div>
+            <div>
+              <label for="expense-category">Category</label>
+              <select id="expense-category" name="expenseCategory" required>
+                <option value="Food">Food</option>
+                <option value="Transport">Transport</option>
+                <option value="Bills">Bills</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="expense-date">Date</label>
+              <input id="expense-date" name="expenseDate" type="date" required>
+            </div>
+          </div>
+
+          <button class="button button-primary add-button" type="submit">Add expense</button>
+        </form>
+      </section>
+    </div>
+
+    <section class="panel expenses-panel" aria-labelledby="records-heading">
+      <div class="panel-heading records-heading">
+        <div>
+          <p class="eyebrow">YOUR RECORDS</p>
+          <h2 id="records-heading">Recent expenses</h2>
+        </div>
+        <span class="record-count" id="expense-count">0 expenses</span>
+      </div>
+      <p class="empty-message" id="empty-message">No expenses yet. Add your first expense above.</p>
+      <ul class="expense-list" id="expense-list" aria-label="Expense records"></ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>SpendWise helps you make thoughtful money choices.</p>
+  </footer>
+</body>
+</html>
